@@ -1,12 +1,12 @@
-version: '3.7'
+version: '3.8'
 services:
-  mongodb_container:
-    image: mongo:latest
+  mongodb:
+    image: mongo
+    container_name: mongodb
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes:
-      - ./data:/data/db
-  discord_bot:
-    build: .
-    volumes:
-      - ./.env:/usr/src/app/.env
+      - data:/data/db
+
+volumes:
+  data:
