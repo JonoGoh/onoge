@@ -10,10 +10,22 @@ jobs:
     runs-on: self-hosted 
 
     steps:
-      - name: Run bot
+      - name: Pull latest changes
         run: |
           git pull
+        working-directory: /home/jonogoh/Documents/projects/onoge
+
+      - name: Stop existing process
+        run: |
           pkill onoge
+        working-directory: /home/jonogoh/Documents/projects/onoge
+
+      - name: Build project
+        run: |
           go build
+        working-directory: /home/jonogoh/Documents/projects/onoge
+
+      - name: Run bot
+        run: |
           ./onoge &
         working-directory: /home/jonogoh/Documents/projects/onoge
