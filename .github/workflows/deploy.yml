@@ -15,14 +15,14 @@ jobs:
           git pull
         working-directory: /home/jonogoh/Documents/projects/onoge
 
+      - name: Build project
+        run: |
+          go build -v
+        working-directory: /home/jonogoh/Documents/projects/onoge
+        
       - name: Stop existing process
         run: |
           pkill onoge || echo "Process not running"
-        working-directory: /home/jonogoh/Documents/projects/onoge
-
-      - name: Build project
-        run: |
-          go build
         working-directory: /home/jonogoh/Documents/projects/onoge
 
       - name: Run bot
