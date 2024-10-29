@@ -3,21 +3,29 @@ name: Deploy to Raspberry Pi
 on:
   push:
     branches:
-      - master  # Adjust if you want to deploy from another branch
+      - master  # Trigger on push to the main branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted  # This targets your self-hosted runner
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.7.0
+      - name: Set up Go
+        uses: actions/setup-go@v4
         with:
-          ssh-private-key: ${{ secrets.PI_SSH_KEY }}
+          go-version: '1.20'  # Replace with the version you're using
 
-      - name: Copy files to Raspberry Pi
+      - name: Build project
         run: |
-          rsync -avz --delete . ${{ secrets.PI_USER }}@${{ secrets.PI_HOST }}:/home/${{ secrets.PI_USER }}/Documents/projects/onoge
+          go build
+
+      - name: Stop existing process (if any)
+        run: |
+          pkill -f onoge || echo "No running process to stop"
+
+      - name: Run program
+        run: |
+          nohup ./onoge &  # Run in the background
