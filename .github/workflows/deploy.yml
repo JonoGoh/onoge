@@ -13,6 +13,7 @@ jobs:
       - name: Run bot
         run: |
           git pull
+          pkill onoge
           go build
-          ./onoge
+          ./onoge &
         working-directory: /home/jonogoh/Documents/projects/onoge
