@@ -17,7 +17,7 @@ jobs:
 
       - name: Stop existing process
         run: |
-          pkill onoge
+          pkill onoge || echo "Process not running"
         working-directory: /home/jonogoh/Documents/projects/onoge
 
       - name: Build project
