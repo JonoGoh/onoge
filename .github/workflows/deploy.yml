@@ -38,7 +38,8 @@ jobs:
         with:
           host: ${{ secrets.PI_HOST }}
           username: jonogoh
-          password: ${{ secrets.PI_SSH_KEY }}
+          key: ${{ secrets.PI_SSH_KEY }}
+          port: 2222
           script: |
             docker pull jonogoh/onoge:latest
             docker stop onoge-bot || true
