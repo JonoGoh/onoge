@@ -36,7 +36,7 @@ jobs:
       - name: SSH into Raspberry Pi and run new Docker image
         uses: appleboy/ssh-action@v1.1.0
         with:
-          host: ${{ secrets.PI_HOST }}
+          host: ${{ secrets.PI_PUBLIC_IP }}
           username: jonogoh
           key: ${{ secrets.PI_SSH_KEY }}
           port: 2222
