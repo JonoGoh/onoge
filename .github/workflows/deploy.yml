@@ -37,8 +37,8 @@ jobs:
         uses: appleboy/ssh-action@v1.1.0
         with:
           host: ${{ secrets.PI_HOST }}
-          username: ${{ secrets.PI_USERNAME }}
-          password: ${{ secrets.PI_PASSWORD }}
+          username: jonogoh
+          password: ${{ secrets.PI_SSH_KEY }}
           script: |
             docker pull jonogoh/onoge:latest
             docker stop onoge-bot || true
