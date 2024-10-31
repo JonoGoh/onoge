@@ -1,4 +1,4 @@
-name: Deploy to Raspberry Pi
+name: Onoge Workflow
 
 on:
   push:
@@ -32,3 +32,15 @@ jobs:
           push: true
           tags: jonogoh/onoge:latest
           platforms: linux/arm64/v8
+
+      - name: SSH into Raspberry Pi and run new Docker image
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.PI_HOST }}
+          username: ${{ secrets.PI_USERNAME }}
+          password: ${{ secrets.PI_PASSWORD }}
+          script: |
+            docker pull jonogoh/onoge:latest
+            docker stop onoge-bot || true
+            docker rm onoge-bot || true
+            docker run -d --name onoge-bot -e DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }} jonogoh/onoge:latest
