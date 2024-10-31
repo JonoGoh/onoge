@@ -1,3 +1,4 @@
-.env
+*.env
+*.out
+
 onoge
-data

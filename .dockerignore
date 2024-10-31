@@ -1,0 +1,8 @@
+.git
+.gitignore
+
+*.exe
+*.out
+
+Dockerfile
+docker-compose.yml

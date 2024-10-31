@@ -7,16 +7,16 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/joho/godotenv" // Import the godotenv package
+	// "github.com/joho/godotenv" // Import the godotenv package
 	"onoge/commands"     // Import the commands package
 )
 
 func main() {
 	// Load environment variables from the .env file
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
 
 	// Load the token from the environment variables
 	token := os.Getenv("DISCORD_TOKEN")
