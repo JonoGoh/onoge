@@ -12,7 +12,7 @@ var quotes = []string{
 	"Eat my arse.",
 	"Sorry when? When did I ask?",
 	"Shut up you sket.",
-	"That's absolutely diabolical.",
+	"That's diabolical.",
 	"Why the fuck is Bradley here?",
 	"Oh my diddly days.",
 	"Suck your mum.",
